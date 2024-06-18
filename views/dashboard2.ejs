@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #c1c1c1;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      button {
+        margin: 5px;
+      }
+      input{
+        border: none;
+        border-bottom: 2px solid black;
+      }
+      .search_btn{
+        border: none;
+        background-color: #464686;
+        color: white;
+        padding: 5px 5px;
+        border-radius: 5px;
+      }
+
+      /* ----------------- */
+
+      body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        table{
+            width: 100%;
+            border: 2px solid black;
+        }
+        th{
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+
+        }
+        td:last-child{
+            text-align: center;
+        }
+        .form{
+            padding-bottom: 40px;
+        }
+        input{
+            margin-right: 20px;
+        }
+        .heading{
+            background-color: rgb(195, 255, 255);
+        }
+        .data:nth-child(even) {
+            background-color: #dddddd;
+        }
+        .data{
+            padding: 8px 0px;
+        }
+        .delete_btn{
+            padding: 5px 9px;
+            background-color: rgb(231, 41, 41);
+            border: none;
+            border-radius: 5px;
+            margin: 8px 0px;
+            color: white;
+            cursor: pointer;
+        }
+        .update_btn{
+            padding: 5px 9px;
+            background-color: rgb(82, 152, 223);
+            border: none;
+            border-radius: 5px;
+            margin: 8px 0px;
+            color: white;
+            cursor: pointer;
+        }
+        .add-btn{
+            border: none;
+            background-color: rgb(25, 182, 25);
+            padding: 4px 4px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a{
+            color: white;
+        }
+
+      /* ----- header --------- */
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400&family=Poiret+One&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+header {
+  background-color: #252525;
+  padding: 8px 16px;
+  box-shadow: 0px 0px 4px 2px #565656;
+}
+header div.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.navbar div.logo {
+  color: #f5f5f5;
+  font-family: "Quicksand", sans-serif;
+}
+div.logo h2 {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+div.nav-links ul.links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+ul.links li {
+  margin: 0px 8px;
+}
+ul.links li:last-child {
+  margin-right: 0;
+}
+ul.links li a {
+  color: white;
+  text-decoration: none;
+  font-family: "Quicksand", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+}
+
+
+div.menu-trigger {
+  display: none;
+}
+button.close-nav {
+  display: none;
+}
+div.menu-trigger button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+div.menu-trigger button:focus,
+div.menu-trigger button:hover {
+  color: #f3f26f;
+}
+div.content {
+  margin-top: 150px;
+  text-align: center;
+}
+div.content p {
+  font-family: "Roboto", sans-serif;
+  color: #464686;
+  font-size: 1.3rem;
+}
+div.content a {
+  margin-top: 30px;
+  display: block;
+  color: grey;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease-out;
+}
+div.content a:hover {
+  color: red;
+}
+@media screen and (min-width: 1000px) {
+  header {
+    margin: 0px 10%;
+  }
+}
+@media screen and (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    background-color: #f3f26f;
+  }
+  div.nav-links {
+    display: none;
+    background-color: #252525;
+    position: fixed;
+    min-width: 200px;
+    height: 100%;
+    top: 0;
+    padding: 0;
+    right: 0;
+    z-index: 1;
+    animation: appear 0.7s ease-in-out;
+  }
+  @keyframes appear {
+    0% {
+      right: -300px;
+    }
+    100% {
+      right: 0px;
+    }
+  }
+  div.nav-links ul.links {
+    display: block;
+    width: 100%;
+    padding: 0px;
+    margin-top: 30px;
+  }
+  ul.links li {
+    margin: 0;
+  }
+  ul.links li a {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+  }
+  ul.links li a:hover,
+  ul.links li a:focus {
+    background: #efefef;
+    color: #595907;
+  }
+  button.close-nav {
+    display: block;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 8px;
+    left: 168px;
+    cursor: pointer;
+  }
+  button.close-nav:focus {
+    color: red;
+  }
+  div.menu-trigger {
+    display: block;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo"><h2>DASHBOARD</h2></div>
+          <div class="nav-links">
+              <button class="close-nav" onclick="closemenu()"><i class="fas fa-times-circle"></i></button>
+              <ul class="links">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/users/new/dashboard">Dashboard</a></li>
+                <li><a href="/about">About us</a></li>
+                <!-- <li><a href="#">Community</a></li> -->
+                <li><a href="/contact">Contact Us</a></li>
+              </ul>
+          </div>
+        <div class="menu-trigger"><button onclick="openmenu()"><i class="fas fa-bars"></i></button></div>
+        </div>
+    </header>
+<main style="margin-top: 20px; padding: 20px;">
+    <h1>Admin Dashboard</h1>
+
+    <!-- Form for adding a new user -->
+    <form id="addUserForm" style="margin-bottom: 20px">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="text" name="type" placeholder="movie type" required />
+      <input type="text" name="rating" placeholder="rating" required />
+      <button class="add-btn" type="submit">Add movie</button>
+    </form>
+    
+    <!-- Form for searching a user by ID -->
+    <form id="searchUserForm">
+      <input type="text" name="userId" placeholder="User ID" required />
+      <button class="search_btn" type="submit">Search User</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>type</th>
+          <th>rating</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+        <% users.forEach(user => { %>
+        <tr class="data" id="user-<%= user._id %>">
+          <td><%= user._id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.type %></td>
+          <td><%= user.rating %></td>
+          <td>
+            <!-- Update button triggers a modal or new form for updating user details -->
+            <button class="update_btn"
+              onclick="showUpdateForm('<%= user._id %>', '<%= user.name %>', '<%= user.type %>', '<%= user.rating %>')"
+            >
+              Update
+            </button>
+            <!-- Delete button triggers a delete request -->
+            <button class="delete_btn" onclick="deleteUser('<%= user._id %>')">Delete</button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <!-- Update form modal (initially hidden) -->
+    <div
+      id="updateFormModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        border: 1px solid #ddd;
+        padding: 20px;
+        background-color: white;
+      "
+    >
+      <form id="updateForm" method="POST">
+        <input type="text" name="name" placeholder="New Name" required />
+        <input type="text" name="type" placeholder="New type" required />
+        <input
+          type="number"
+          name="rating"
+          placeholder="New rating"
+          required
+        />
+        <button type="submit">Update Movie</button>
+      </form>
+      <button onclick="hideUpdateForm()">Cancel</button>
+    </div>
+  </main>
+
+    <script>
+      document
+        .getElementById("addUserForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          fetch("/users/add", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                location.reload(); // Reload the page to update the user list
+              } else {
+                alert("Failed to add movie");
+              }
+            });
+        });
+
+        document
+        .getElementById("searchUserForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          const userId = formData.get("userId");
+          fetch(`/users/${userId}`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const userTableBody = document.getElementById("userTableBody");
+              if (data) {
+                userTableBody.innerHTML = `
+                  <tr id="user-${data._id}">
+                    <td>${data._id}</td>
+                    <td>${data.name}</td>
+                    <td>${data.type}</td>
+                    <td>${data.rating}</td>
+                    <td>
+                      <button style="  padding: 5px 9px;
+                        background-color: rgb(231, 41, 41);
+                        border: none;
+                        border-radius: 5px;
+                        margin: 8px 0px;
+                        color: white;
+                        cursor: pointer; onclick="deleteUser('${data._id}')">Delete</button>
+
+                      <button style=" padding: 5px 9px;
+                        background-color: rgb(82, 152, 223);
+                        border: none;
+                        border-radius: 5px;
+                        margin: 8px 0px;
+                        color: white;
+                        cursor: pointer;" onclick="showUpdateForm('${data._id}', '${data.name}', '${data.type}', '${data.rating}')">Update</button>
+                    </td>
+                  </tr>
+                `;
+              } else {
+                userTableBody.innerHTML = `<tr><td colspan="5">User not found</td></tr>`;
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+              alert("Failed to search user");
+            });
+        });
+
+      function showUpdateForm(id, name, type, rating) {
+        const form = document.getElementById("updateForm");
+        form.action = `/users/update/${id}`;
+        form.elements["name"].value = name;
+        form.elements["type"].value = type;
+        form.elements["rating"].value = rating;
+        document.getElementById("updateFormModal").style.display = "block";
+      }
+
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          fetch(event.target.action, {
+            method: "PUT",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                location.reload(); // Reload the page to update the user list
+              } else {
+                alert("Failed to update user");
+              }
+            });
+        });
+
+      function hideUpdateForm() {
+        document.getElementById("updateFormModal").style.display = "none";
+      }
+
+      function deleteUser(id) {
+        fetch(`/users/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.getElementById(`user-${id}`).remove(); // Remove the user row from the table
+            } else {
+              alert("Failed to delete user");
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      button {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>User's Dashboard</h1>
+
+    <!-- Form for adding a new user -->
+    <form id="addUserForm" style="margin-bottom: 20px">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="text" name="age" placeholder="Age" required />
+      <input type="text" name="location" placeholder="Location" required />
+      <button type="submit">Add User</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="userTableBody">
+        <% users.forEach(user => { %>
+        <tr id="user-<%= user._id %>">
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.age %></td>
+          <td><%= user.location %></td>
+          <td>
+            <!-- Update button triggers a modal or new form for updating user details -->
+            <button
+              onclick="showUpdateForm('<%= user._id %>', '<%= user.name %>', '<%= user.age %>', '<%= user.location %>')"
+            >
+              Update
+            </button>
+            <!-- Delete button triggers a delete request -->
+            <button onclick="deleteUser('<%= user._id %>')">Delete</button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <!-- Update form modal (initially hidden) -->
+    <div
+      id="updateFormModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        border: 1px solid #ddd;
+        padding: 20px;
+        background-color: white;
+      "
+    >
+      <form id="updateForm" method="POST">
+        <input type="text" name="name" placeholder="New Name" required />
+        <input type="number" name="age" placeholder="New Age" required />
+        <input
+          type="text"
+          name="location"
+          placeholder="New Location"
+          required
+        />
+        <button type="submit">Update User</button>
+      </form>
+      <button onclick="hideUpdateForm()">Cancel</button>
+    </div>
+
+    <script>
+      document
+        .getElementById("addUserForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          fetch("/users/add", {
+            method: "POST",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                location.reload(); // Reload the page to update the user list
+              } else {
+                alert("Failed to add user");
+              }
+            });
+        });
+
+      function showUpdateForm(id, name, age, location) {
+        const form = document.getElementById("updateForm");
+        form.action = `/users/update/${id}`;
+        form.elements["name"].value = name;
+        form.elements["age"].value = age;
+        form.elements["location"].value = location;
+        document.getElementById("updateFormModal").style.display = "block";
+      }
+
+      document
+        .getElementById("updateForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const formData = new FormData(event.target);
+          fetch(event.target.action, {
+            method: "PUT",
+            body: JSON.stringify(Object.fromEntries(formData)),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                location.reload(); // Reload the page to update the user list
+              } else {
+                alert("Failed to update user");
+              }
+            });
+        });
+
+      function hideUpdateForm() {
+        document.getElementById("updateFormModal").style.display = "none";
+      }
+
+      function deleteUser(id) {
+        fetch(`/users/delete/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              document.getElementById(`user-${id}`).remove(); // Remove the user row from the table
+            } else {
+              alert("Failed to delete user");
+            }
+          });
+      }
+    </script>
+  </body>
+</html>

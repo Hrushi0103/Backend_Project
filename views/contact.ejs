@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400&family=Poiret+One&family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400&family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+header {
+  background-color: #252525;
+  padding: 8px 16px;
+  box-shadow: 0px 0px 4px 2px #565656;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+}
+header div.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.navbar div.logo {
+  color: #f5f5f5;
+  font-family: "Quicksand", sans-serif;
+}
+div.logo h2 {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+div.nav-links ul.links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+ul.links li {
+  margin: 0px 8px;
+}
+ul.links li:last-child {
+  margin-right: 0;
+}
+ul.links li a {
+  color: white;
+  text-decoration: none;
+  font-family: "Quicksand", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+}
+
+
+div.menu-trigger {
+  display: none;
+}
+button.close-nav {
+  display: none;
+}
+div.menu-trigger button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+}
+div.menu-trigger button:focus,
+div.menu-trigger button:hover {
+  color: #f3f26f;
+}
+div.content {
+  margin-top: 150px;
+  text-align: center;
+}
+div.content p {
+  font-family: "Roboto", sans-serif;
+  color: #464686;
+  font-size: 1.3rem;
+}
+div.content a {
+  margin-top: 30px;
+  display: block;
+  color: grey;
+  font-family: "Roboto", sans-serif;
+  transition: all 0.3s ease-out;
+}
+div.content a:hover {
+  color: red;
+}
+@media screen and (min-width: 1000px) {
+  header {
+    margin: 0px 10%;
+  }
+}
+@media screen and (max-width: 600px) {
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    background-color: #f3f26f;
+  }
+  div.nav-links {
+    display: none;
+    background-color: #252525;
+    position: fixed;
+    min-width: 200px;
+    height: 100%;
+    top: 0;
+    padding: 0;
+    right: 0;
+    z-index: 1;
+    animation: appear 0.7s ease-in-out;
+  }
+  @keyframes appear {
+    0% {
+      right: -300px;
+    }
+    100% {
+      right: 0px;
+    }
+  }
+  div.nav-links ul.links {
+    display: block;
+    width: 100%;
+    padding: 0px;
+    margin-top: 30px;
+  }
+  ul.links li {
+    margin: 0;
+  }
+  ul.links li a {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+  }
+  ul.links li a:hover,
+  ul.links li a:focus {
+    background: #efefef;
+    color: #595907;
+  }
+  button.close-nav {
+    display: block;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    position: absolute;
+    top: 8px;
+    left: 168px;
+    cursor: pointer;
+  }
+  button.close-nav:focus {
+    color: red;
+  }
+  div.menu-trigger {
+    display: block;
+  }
+}
+
+/* ---- contact us main ----- */
+body {
+    background-color: #ffffff;
+    padding-top: 85px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif, 'arial';
+    font-weight: 600;
+    font-size: 72px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Roboto', sans-serif, 'arial';
+    font-weight: 400;
+    font-size: 20px;
+    color: #9b9b9b;
+    line-height: 1.5;
+}
+
+/* ///// inputs /////*/
+
+input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
+    font-size: 0.75em;
+    color: #999;
+    top: -5px;
+    -webkit-transition: all 0.225s ease;
+    transition: all 0.225s ease;
+}
+
+.styled-input {
+    float: left;
+    width: 293px;
+    margin: 1rem 0;
+    position: relative;
+    border-radius: 4px;
+}
+
+@media only screen and (max-width: 768px){
+    .styled-input {
+        width:100%;
+    }
+}
+
+.styled-input label {
+    color: #999;
+    padding: 1.3rem 30px 1rem 30px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    pointer-events: none;
+}
+
+.styled-input.wide { 
+    width: 650px;
+    max-width: 100%;
+}
+
+input,
+textarea {
+    padding: 30px;
+    border: 0;
+    width: 100%;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 4px ;
+    border: black solid 2px;
+
+}
+
+input:focus,
+textarea:focus { outline: 0; }
+
+input:focus ~ span,
+textarea:focus ~ span {
+    width: 100%;
+    -webkit-transition: all 0.075s ease;
+    transition: all 0.075s ease;
+}
+
+textarea {
+    width: 100%;
+    min-height: 15em;
+}
+
+.input-container {
+    width: 650px;
+    max-width: 100%;
+    margin: 20px auto 25px auto;
+}
+
+.submit-btn {
+    /* float: right; */
+    padding: 7px 35px;
+    border-radius: 60px;
+    display: inline-block;
+    background-color: #4b8cfb;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.06),
+              0 2px 10px 0 rgba(0,0,0,0.07);
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(1px);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
+              0 1px 1px 0 rgba(0,0,0,0.09);
+}
+
+@media (max-width: 768px) {
+    .submit-btn {
+        width:100%;
+        float: none;
+        text-align:center;
+    }
+}
+
+input[type=checkbox] + label {
+  color: #ccc;
+  font-style: italic;
+} 
+
+input[type=checkbox]:checked + label {
+  color: #f00;
+  font-style: normal;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+          <div class="logo"><h2>DASHBOARD</h2></div>
+            <div class="nav-links">
+                <button class="close-nav" onclick="closemenu()"><i class="fas fa-times-circle"></i></button>
+                <ul class="links">
+                  <li><a href="/home">Home</a></li>
+                  <li><a href="/users/new/dashboard">Dashboard</a></li>
+                  <li><a href="/about">About us</a></li>
+                  <!-- <li><a href="#">Community</a></li> -->
+                  <!-- <li><a href="/contact">Contact Us</a></li> -->
+                </ul>
+            </div>
+          <div class="menu-trigger"><button onclick="openmenu()"><i class="fas fa-bars"></i></button></div>
+          </div>
+      </header>
+      <!-- contact us main -->
+      <div class="container">
+        <div class="row">
+                <h1>contact us</h1>
+        </div>
+        <div class="row">
+                <h4 style="text-align:center">We'd love to hear from you!</h4>
+        </div>
+        <form action="https://formspree.io/f/mdoqqelj"
+        method="POST">
+            <div class="row input-container">
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <input type="text" name="name" required />
+                            <label>Name</label> 
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input">
+                            <input type="text" name="Email" required />
+                            <label>Email</label> 
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="styled-input" style="float:right;">
+                            <input type="text" name="number" required />
+                            <label>Phone Number</label> 
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="styled-input wide">
+                            <textarea name="Message" required></textarea>
+                            <label>Message</label>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <button class="btn-lrg submit-btn" type="submit">Send Message</button>
+                    </div>
+            </div>
+        </form>
+    </div>
+    
+  
+</body>
+</html>

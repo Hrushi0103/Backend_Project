@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #333;
+      }
+      header {
+        background: #4caf50;
+        color: white;
+        padding: 1em;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      main {
+        text-align: center;
+        padding: 2em;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin-top: 1em;
+      }
+      a {
+        text-decoration: none;
+        color: #4caf50;
+        font-weight: bold;
+      }
+      nav {
+        margin-top: 1em;
+      }
+      nav a {
+        margin: 0 1em;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 0.5em 1em;
+        font-size: 1em;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome, <%= user.username %>!</h1>
+    </header>
+    <main>
+      <h2>Home Page</h2>
+      <p>Explore our website using the links below.</p>
+      <nav>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Us</a>
+      </nav>
+      <form action="/logout" method="post" style="margin-top: 1em">
+        <button type="submit">Logout</button>
+      </form>
+      <button style="margin-top: 10px;"><a style="color: white;" href="/users/new/dashboard">dashboard</a></button>
+    </main>
+  </body>
+</html>

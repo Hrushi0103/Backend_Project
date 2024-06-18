@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-image: url("https://images.unsplash.com/photo-1616530940355-351fabd9524b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG1vdmllcyUyMHBvc3RlcnN8ZW58MHx8MHx8fDA%3D");
+
+    }
+    /* body::before{
+      background-color: rgba(17, 17, 17, 0.212);
+    } */
+    .login{
+      border: 2px solid rgb(55, 55, 156);
+      padding: 20px 25px;
+      background-color: rgba(240, 255, 255, 0.634);
+      backdrop-filter: blur(5px);
+      height: 300px;
+      width: 400px;
+    }
+    input{
+      display: block;
+      margin-bottom: 20px;
+      width: 95%;
+      padding: 6px;
+    }
+    .login_btn{
+      padding: 8px 20px;
+      background-color: blueviolet;
+      border: none;
+      color: white;
+      font-size: large;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="login">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <input type="text" name="username" placeholder="Username" required />
+      <input type="password" name="password" placeholder="Password" required /> 
+      <button class="login_btn" type="submit">Login</button>
+    </form>
+   <p>if you are a New <a href="/register">Register</a></p> 
+  </div>
+</body>
+</html>
